@@ -4,5 +4,13 @@
     padding: 20px;
 }
 .startBtn{
+    display: flex;
     align-self: center;
+}
+#initialsPrompt{
+    width:50%; 
+    height:20px; 
+    display:flex; 
+    align-content:center; 
+    justify-content:center;
 }
