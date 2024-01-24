@@ -3,6 +3,7 @@ var mainEl = document.getElementById("main");
 var headerEl = document.getElementById('header');
 var startBtn = document.getElementById('startBtn');
 var quizTimer = 5;
+startBtn.addEventListener('click', setTime)
 function setTime() {
   var timerInterval = setInterval(function() {
     quizTimer--;
@@ -21,6 +22,13 @@ var goBackBtn = document.createElement('button');
 initialsPrompt.appendChild(goBackBtn);
 goBackBtn.textContent = 'Go Back';
 initialsPrompt.style.display ='none'
+goBackBtn.addEventListener('click', function(){
+  startBtn.style.display = 'flex'
+  quizTimer = 5
+  header.textContent = "Lightning Quiz!";
+  mainEl.textContent = "Welcome to the Lightning Quiz! once you press the 'Start Quiz' button, you will have one minute to answer up to 6 questions as correctly and as fast as you can! I hope your ready for a challenge!"
+  initialsPrompt.style.display ='none'
+});
 
 function highScore(){
   quizTimer = 0;
@@ -31,4 +39,3 @@ function highScore(){
   startBtn.style.display = 'none'
   goBackBtn.textContent = 'Go Back';
 };
-setTime()
