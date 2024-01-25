@@ -1,3 +1,4 @@
+//defines and appends all variables that will be needed within the quiz so that when questions change we can easily adjust what is shown and which text is showing for answers and questions
 var timeEl = document.querySelector('.time');
 var header = document.getElementById('header');
 var mainEl = document.getElementById("main");
@@ -24,7 +25,9 @@ initialsPrompt.appendChild(goBackBtn);
 initialsPrompt.appendChild(submitBtn);
 answerList.style.display = 'none';
 initialsPrompt.style.display = 'none';
+//sets quiz timer
 var quizTimer = 60
+//is the "brain" of the quiz checks to see when answer buttons are clicked and moves on to the next question while displaying messages and checking to see if it is the correct answer and if so incrementing correct score
 answerOne.addEventListener('click', function(event){
   if (event.target.textContent === 'HTML'){
     highScoreTracker.textContent ='Wrong!'
@@ -116,6 +119,7 @@ answerFour.addEventListener('click', function(event){
     highScore();
   }
 });
+//This function resets the main page and adds it back when the go back button is pushed
 function frontPage(){
   header.textContent = "Lightning Quiz!";
   mainEl.textContent = "Welcome to the Lightning Quiz! once you press the 'Start Quiz' button, you will have one minute to answer up to 6 questions as correctly and as fast as you can! I hope your ready for a challenge! "
@@ -124,7 +128,7 @@ function frontPage(){
   highScoreTracker.style.display ='none';
   answerList.style.display = 'none';
 }
-
+//this function sets the timer for the quiz insuring that all participants get the proper alloted time
 function setTime() {
     var timerInterval = setInterval(function() {
       quizTimer--;
@@ -136,6 +140,7 @@ function setTime() {
       } 
     }, 1000);
 };
+//This function sets displays at the start of a quiz and starts the questions and the timer
 function startQuiz(){
   initialsPrompt.style.display = 'none'
   highScoreTracker.style.display = 'none'
@@ -145,8 +150,10 @@ function startQuiz(){
   quizTimer = 60
   questionOne();
   setTime();
-};  
+};
+// Calls start Quiz function when start quiz button clicked  
 startBtn.addEventListener('click', startQuiz)
+//sets the text to display for each question and answer set so that users know what questions to answer and what choices are available
 function questionOne(){
   header.textContent = 'Question One:'
   mainEl.textContent = 'Which of these is a basic programming language used by websites for logic?'
@@ -206,6 +213,7 @@ function questionSix(){
   answerThree.textContent = '1983';
   answerFour.textContent = '1992';
 };
+//Shows users their score and asks them for initials to add a high score
 function highScore(){
   quizTimer = 0;
   timeEl.textContent = '';
@@ -216,6 +224,7 @@ function highScore(){
   goBackBtn.textContent = 'Go Back';
   goBackBtn.addEventListener('click',frontPage)
 };
+//Allows users to insert their high score into local data and displays it 
 function displayScore() {
   var lastScore = JSON.parse(localStorage.getItem("High Score"));
   if (lastScore !== null) {
