@@ -22,15 +22,74 @@ var goBackBtn = document.createElement('button');
 initialsPrompt.appendChild(goBackBtn);
 goBackBtn.textContent = 'Go Back';
 initialsPrompt.style.display ='none'
-goBackBtn.addEventListener('click', frontPage());
-  function frontPage(){
-    header.textContent = "Lightning Quiz!";
-    mainEl.textContent = "Welcome to the Lightning Quiz! once you press the 'Start Quiz' button, you will have one minute to answer up to 6 questions as correctly and as fast as you can! I hope your ready for a challenge! "
-    startBtn.style.display = 'block';
-    initialsPrompt.style.display = 'none';
-    highScoreTracker.style.display ='none';
-    answerList.style.display = 'none';
-  }
+
+function frontPage(){
+  header.textContent = "Lightning Quiz!";
+  mainEl.textContent = "Welcome to the Lightning Quiz! once you press the 'Start Quiz' button, you will have one minute to answer up to 6 questions as correctly and as fast as you can! I hope your ready for a challenge! "
+  startBtn.style.display = 'block';
+  initialsPrompt.style.display = 'none';
+  highScoreTracker.style.display ='none';
+  answerList.style.display = 'none';
+}
+function questionOne(){
+  header.textContent = 'Question One:'
+  mainEl.textContent = 'Which of these is a basic programming language used by websites for logic?'
+  answerList.style.display = 'flex'
+  answerOne.textContent = 'HTML'
+  answerTwo.textContent = 'Binary'
+  answerThree.textContent = 'Viper'
+  answerFour.textContent = 'JavaScript'
+};
+function questionTwo(){
+  answerList.style.display = 'flex'
+  initialsPrompt.style.display = 'none'
+  header.textContent = 'Question Two:'
+  mainEl.textContent = 'Which of these is not a web browser?'
+  answerOne.textContent = 'Safari'
+  answerTwo.textContent = 'Opus'
+  answerThree.textContent = 'Internet Explorer'
+  answerFour.textContent = 'Opera'
+};
+function questionThree(){  
+  answerList.style.display = 'flex'
+  initialsPrompt.style.display = 'none'
+  header.textContent = 'Question Three:';
+  mainEl.textContent = 'Which of these is not a data type?';
+  answerOne.textContent = 'Number';
+  answerTwo.textContent = 'Boolean';
+  answerThree.textContent = 'Div';
+  answerFour.textContent = 'String';
+};
+function questionFour(){
+  answerList.style.display = 'flex'
+  initialsPrompt.style.display = 'none'
+  header.textContent = 'Question Four:';
+  mainEl.textContent = 'How many ASCII characters are there?';
+  answerOne.textContent = '256';
+  answerTwo.textContent = '149,813';
+  answerThree.textContent = '36';
+  answerFour.textContent = '206';
+};
+function questionFive(){
+  answerList.style.display = 'flex';
+  initialsPrompt.style.display = 'none';
+  header.textContent = 'Question Five:';
+  mainEl.textContent = 'Which of These was an early web browser that changed how we interacted with the internet?';
+  answerOne.textContent = 'Internet Explorer';
+  answerTwo.textContent = 'Thunderbird';
+  answerThree.textContent = 'MS DOS';
+  answerFour.textContent = 'Mosaic';
+};
+function questionSix(){ 
+  answerList.style.display = 'flex';
+  initialsPrompt.style.display = 'none';
+  header.textContent = 'Question Six:';
+  mainEl.textContent = 'What Year did the first mass-market Graphical User Interface computer become available?';
+  answerOne.textContent = '1974';
+  answerTwo.textContent = '1985';
+  answerThree.textContent = '1983';
+  answerFour.textContent = '1992';
+};
 function highScore(){
   quizTimer = 0;
   timeEl.textContent = '';
@@ -39,4 +98,5 @@ function highScore(){
   initialsPrompt.style.display = 'flex'
   startBtn.style.display = 'none'
   goBackBtn.textContent = 'Go Back';
+  goBackBtn.addEventListener('click', frontPage());
 };
