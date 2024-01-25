@@ -134,6 +134,17 @@ function setTime() {
     }
   }, 300);
 }
+function startQuiz(){
+  initialsPrompt.style.display = 'none'
+  highScoreTracker.style.display = 'none'
+  startBtn.style.display = 'none'
+  answerList.style.display = 'flex'
+  correct = 0;
+  quizTimer = 60
+  questionOne();
+  setTime();
+};  
+startBtn.addEventListener('click', startQuiz)
 function questionOne(){
   header.textContent = 'Question One:'
   mainEl.textContent = 'Which of these is a basic programming language used by websites for logic?'
