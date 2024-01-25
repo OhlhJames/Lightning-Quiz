@@ -21,9 +21,7 @@ goBackBtn.textContent = 'Go Back';
 answerList.style.display = 'none';
 initialsPrompt.style.display ='none'
 var quizTimer = 60;
-
-startBtn.addEventListener('click', setTime)
-
+startBtn.addEventListener('click', startQuiz)
 answerOne.addEventListener('click', function(event){
   if (event.target.textContent === 'HTML'){
     highScoreTracker.textContent ='Wrong!'
@@ -128,7 +126,7 @@ function setTime() {
   var timerInterval = setInterval(function() {
     quizTimer--;
     timeEl.textContent = quizTimer + " seconds left.";
-    if(quizTimer === 0) {
+    if(quizTimer <= 0) {
       clearInterval(timerInterval);
       highScore();
     }
@@ -144,7 +142,7 @@ function startQuiz(){
   questionOne();
   setTime();
 };  
-startBtn.addEventListener('click', startQuiz)
+
 function questionOne(){
   header.textContent = 'Question One:'
   mainEl.textContent = 'Which of these is a basic programming language used by websites for logic?'
