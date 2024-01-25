@@ -18,9 +18,112 @@ answerList.appendChild(answerFour);
 initialsPrompt.appendChild(initialsInput);
 initialsPrompt.appendChild(goBackBtn);
 goBackBtn.textContent = 'Go Back';
+answerList.style.display = 'none';
 initialsPrompt.style.display ='none'
-var quizTimer = 5;
+var quizTimer = 60;
+
 startBtn.addEventListener('click', setTime)
+
+answerOne.addEventListener('click', function(event){
+  if (event.target.textContent === 'HTML'){
+    highScoreTracker.textContent ='Wrong!'
+    questionTwo();
+  }else if (event.target.textContent === 'Safari'){
+    highScoreTracker.textContent ='Wrong!'
+    questionThree();
+  }else if (event.target.textContent === 'Number'){
+    highScoreTracker.textContent ='Wrong!'
+    questionFour();
+  }else if (event.target.textContent === '256'){
+    highScoreTracker.textContent ='Correct!'
+    correct ++;
+    questionFive();
+  }else if (event.target.textContent === 'Internet Explorer'){
+    highScoreTracker.textContent ='Wrong!'
+    questionSix();
+  }else{
+    highScoreTracker.textContent ='Wrong!'
+    highScore();
+  }
+});
+answerTwo.addEventListener('click', function(event){
+  if (event.target.textContent === 'Binary'){
+    highScoreTracker.textContent ='Wrong!'
+    questionTwo();
+  }else if (event.target.textContent === 'Opus'){
+    highScoreTracker.textContent ='Correct!'
+    correct ++;
+    questionThree();
+  }else if (event.target.textContent === 'Boolean'){
+    highScoreTracker.textContent ='Wrong!'
+    questionFour();
+  }else if (event.target.textContent === '149,813'){
+    highScoreTracker.textContent ='Wrong!'
+    questionFive();
+  }else if (event.target.textContent === 'Thunderbird'){
+    highScoreTracker.textContent ='Wrong!'
+    questionSix();
+  }else{
+    highScoreTracker.textContent ='Wrong!'
+    highScore();
+  }
+});
+answerThree.addEventListener('click', function(event){
+  if (event.target.textContent === 'Viper'){
+    highScoreTracker.textContent ='Wrong!'
+    questionTwo();
+  }else if (event.target.textContent === 'Internet Explorer'){
+    highScoreTracker.textContent ='Wrong!'
+    questionThree();
+  }else if (event.target.textContent === 'Div'){
+    highScoreTracker.textContent ='Correct!'
+    correct ++;
+    questionFour();
+  }else if (event.target.textContent === '36'){
+    highScoreTracker.textContent ='Wrong!'
+    questionFive();
+  }else if (event.target.textContent === 'MS DOS'){
+    highScoreTracker.textContent ='Wrong!'
+    questionSix();
+  }else{
+    highScoreTracker.textContent ='Correct!'
+    correct ++
+    highScore();
+  }
+});
+answerFour.addEventListener('click', function(event){
+  if (event.target.textContent === 'JavaScript'){
+    highScoreTracker.textContent ='Correct!'
+    correct++;
+    questionTwo();
+  }else if (event.target.textContent === 'Opera'){
+    highScoreTracker.textContent ='Wrong!'
+    questionThree();
+  }else if (event.target.textContent === 'Div'){
+    highScoreTracker.textContent ='Correct!'
+    correct ++;
+    questionFour();
+  }else if (event.target.textContent === '206'){
+    highScoreTracker.textContent ='Wrong!'
+    questionFive();
+  }else if (event.target.textContent === 'Mosaic'){
+    highScoreTracker.textContent ='Correct!'
+    correct ++
+    questionSix();
+  }else{
+    highScoreTracker.textContent ='Wrong!'
+    highScore();
+  }
+});
+
+function frontPage(){
+  header.textContent = "Lightning Quiz!";
+  mainEl.textContent = "Welcome to the Lightning Quiz! once you press the 'Start Quiz' button, you will have one minute to answer up to 6 questions as correctly and as fast as you can! I hope your ready for a challenge! "
+  startBtn.style.display = 'block';
+  initialsPrompt.style.display = 'none';
+  highScoreTracker.style.display ='none';
+  answerList.style.display = 'none';
+}
 function setTime() {
   var timerInterval = setInterval(function() {
     quizTimer--;
@@ -30,17 +133,6 @@ function setTime() {
       highScore();
     }
   }, 300);
-}
-
-
-
-function frontPage(){
-  header.textContent = "Lightning Quiz!";
-  mainEl.textContent = "Welcome to the Lightning Quiz! once you press the 'Start Quiz' button, you will have one minute to answer up to 6 questions as correctly and as fast as you can! I hope your ready for a challenge! "
-  startBtn.style.display = 'block';
-  initialsPrompt.style.display = 'none';
-  highScoreTracker.style.display ='none';
-  answerList.style.display = 'none';
 }
 function questionOne(){
   header.textContent = 'Question One:'
