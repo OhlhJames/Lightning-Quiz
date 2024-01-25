@@ -1,6 +1,6 @@
-var timeEl = document.querySelector(".time");
+var timeEl = document.querySelector('.time');
+var header = document.getElementById('header');
 var mainEl = document.getElementById("main");
-var headerEl = document.getElementById('header');
 var startBtn = document.getElementById('startBtn');
 var questionLine = document.createElement('h1');
 var answerList = document.getElementById('answerList')
@@ -8,20 +8,23 @@ var answerOne = document.createElement('button');
 var answerTwo = document.createElement('button');
 var answerThree = document.createElement('button');
 var answerFour = document.createElement('button');
-var goBackBtn = document.createElement('button');
+var highScoreTracker = document.querySelector(".message");
 var initialsPrompt = document.getElementById('initialsPrompt');
-var initialsInput = document.createElement('input');
+var initials = document.createElement('input');
+var goBackBtn = document.createElement('button');
+var submitBtn = document.createElement('button');
+initials.setAttribute('type', 'text');
+submitBtn.textContent = 'Submit';
 answerList.appendChild(answerOne);
 answerList.appendChild(answerTwo);
 answerList.appendChild(answerThree);
 answerList.appendChild(answerFour);
-initialsPrompt.appendChild(initialsInput);
+initialsPrompt.appendChild(initials);
 initialsPrompt.appendChild(goBackBtn);
-goBackBtn.textContent = 'Go Back';
+initialsPrompt.appendChild(submitBtn);
 answerList.style.display = 'none';
-initialsPrompt.style.display ='none'
-var quizTimer = 60;
-startBtn.addEventListener('click', startQuiz)
+initialsPrompt.style.display = 'none';
+var quizTimer = 60
 answerOne.addEventListener('click', function(event){
   if (event.target.textContent === 'HTML'){
     highScoreTracker.textContent ='Wrong!'
@@ -113,7 +116,6 @@ answerFour.addEventListener('click', function(event){
     highScore();
   }
 });
-
 function frontPage(){
   header.textContent = "Lightning Quiz!";
   mainEl.textContent = "Welcome to the Lightning Quiz! once you press the 'Start Quiz' button, you will have one minute to answer up to 6 questions as correctly and as fast as you can! I hope your ready for a challenge! "
@@ -122,16 +124,18 @@ function frontPage(){
   highScoreTracker.style.display ='none';
   answerList.style.display = 'none';
 }
+
 function setTime() {
-  var timerInterval = setInterval(function() {
-    quizTimer--;
-    timeEl.textContent = quizTimer + " seconds left.";
-    if(quizTimer <= 0) {
-      clearInterval(timerInterval);
-      highScore();
-    }
-  }, 300);
-}
+    var timerInterval = setInterval(function() {
+      quizTimer--;
+      timeEl.textContent = quizTimer + " seconds left.";
+      if(quizTimer <= 0) {
+        clearInterval(timerInterval);
+        highScore();
+        timeEl.textContent = ''
+      } 
+    }, 1000);
+};
 function startQuiz(){
   initialsPrompt.style.display = 'none'
   highScoreTracker.style.display = 'none'
@@ -142,7 +146,7 @@ function startQuiz(){
   questionOne();
   setTime();
 };  
-
+startBtn.addEventListener('click', startQuiz)
 function questionOne(){
   header.textContent = 'Question One:'
   mainEl.textContent = 'Which of these is a basic programming language used by websites for logic?'
@@ -205,10 +209,29 @@ function questionSix(){
 function highScore(){
   quizTimer = 0;
   timeEl.textContent = '';
-  headerEl.textContent = 'Congrats!';
-  mainEl.textContent = 'You got correct answers! To add your high score, input your initials below!'
-  initialsPrompt.style.display = 'flex'
-  startBtn.style.display = 'none'
+  header.textContent = 'Congrats!';
+  mainEl.textContent = 'You got ' + correct +' correct answers! To add your high score, input your initials below!'
+  answerList.style.display = 'none';
+  initialsPrompt.style.display = 'flex';
   goBackBtn.textContent = 'Go Back';
-  goBackBtn.addEventListener('click', frontPage());
+  goBackBtn.addEventListener('click',frontPage)
 };
+function displayScore() {
+  var lastScore = JSON.parse(localStorage.getItem("High Score"));
+  if (lastScore !== null) {
+    highScoreTracker.style.display = 'flex'
+    highScoreTracker.textContent = lastScore.initials + 
+    " : " + lastScore.score;
+  };
+};
+submitBtn.addEventListener('click',function(event) {
+  event.stopPropagation();
+  event.preventDefault(); 
+  var scoreKeeper = {
+    initials: initials.value.trim(),
+    score: correct,
+  };
+  localStorage.setItem("High Score", JSON.stringify(scoreKeeper));
+  displayScore();
+  correct = 0;
+});

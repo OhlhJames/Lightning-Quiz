@@ -1,8 +1,15 @@
+body{
+    display: flex;
+    flex-direction: column;
+}
 button{
     background-color:mediumorchid
 }
 .main, .header {
+    display: flex;
+    justify-content: center;
     align-content: center;
+    align-items:center;
     margin: 20px;
     padding: 20px;
 }
@@ -11,7 +18,6 @@ button{
     align-self: center;
 }
 #initialsPrompt{
-    width:50%; 
     height:20px; 
     display:flex; 
     align-content:center; 
@@ -24,4 +30,8 @@ button{
     text-align:center; 
     flex-direction: column; 
     
+}
+.message{
+    display:flex;
+    justify-content: center;
 }
