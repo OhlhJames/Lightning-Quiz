@@ -2,6 +2,23 @@ var timeEl = document.querySelector(".time");
 var mainEl = document.getElementById("main");
 var headerEl = document.getElementById('header');
 var startBtn = document.getElementById('startBtn');
+var questionLine = document.createElement('h1');
+var answerList = document.getElementById('answerList')
+var answerOne = document.createElement('button'); 
+var answerTwo = document.createElement('button');
+var answerThree = document.createElement('button');
+var answerFour = document.createElement('button');
+var goBackBtn = document.createElement('button');
+var initialsPrompt = document.getElementById('initialsPrompt');
+var initialsInput = document.createElement('input');
+answerList.appendChild(answerOne);
+answerList.appendChild(answerTwo);
+answerList.appendChild(answerThree);
+answerList.appendChild(answerFour);
+initialsPrompt.appendChild(initialsInput);
+initialsPrompt.appendChild(goBackBtn);
+goBackBtn.textContent = 'Go Back';
+initialsPrompt.style.display ='none'
 var quizTimer = 5;
 startBtn.addEventListener('click', setTime)
 function setTime() {
@@ -15,13 +32,7 @@ function setTime() {
   }, 300);
 }
 
-var initialsPrompt = document.getElementById('initialsPrompt');
-var initialsInput = document.createElement('input');
-initialsPrompt.appendChild(initialsInput);
-var goBackBtn = document.createElement('button');
-initialsPrompt.appendChild(goBackBtn);
-goBackBtn.textContent = 'Go Back';
-initialsPrompt.style.display ='none'
+
 
 function frontPage(){
   header.textContent = "Lightning Quiz!";
