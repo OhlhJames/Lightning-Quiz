@@ -1,4 +1,7 @@
-.main{
+button{
+    background-color:mediumorchid
+}
+.main, .header {
     align-content: center;
     margin: 20px;
     padding: 20px;
@@ -13,4 +16,12 @@
     display:flex; 
     align-content:center; 
     justify-content:center;
+}
+#answerList{
+    display: flex; 
+    margin:auto; 
+    width:30%; 
+    text-align:center; 
+    flex-direction: column; 
+    
 }
